@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     <NuGetPackageImportStamp>
@@ -108,7 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xamarin_TabbedPage_Sample\Xamarin_TabbedPage_Sample.csproj">
-      <Project>{0E08AF31-2E1E-40A5-94B1-BFFF4534A167}</Project>
+      <Project>{B19F28BB-B355-491D-BCF2-23DAB360C5A7}</Project>
       <Name>Xamarin_TabbedPage_Sample</Name>
     </ProjectReference>
   </ItemGroup>

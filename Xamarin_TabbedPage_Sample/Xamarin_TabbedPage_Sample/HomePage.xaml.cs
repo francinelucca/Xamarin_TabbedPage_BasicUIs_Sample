@@ -10,11 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace Xamarin_TabbedPage_Sample
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class HomePage : TabbedPage
+	public partial class HomePage : ContentPage
 	{
 		public HomePage ()
 		{
-			InitializeComponent ();
-        }
+			InitializeComponent();
+		}
 	}
 }

@@ -59,7 +59,7 @@ namespace Xamarin_TabbedPage_Sample
         {
             if (await Validate())
             {
-                await Navigation.PushAsync(new HomePage());
+                await Navigation.PushAsync(new MainPage());
             }
         }
 
@@ -73,7 +73,7 @@ namespace Xamarin_TabbedPage_Sample
             }
             else
             {
-                if (!StringValidator.IsEmailValid(Email.Text))
+                if (!Email.Text.IsValidEmail())
                 {
                     await DisplayAlert("Email Address not valid", "Please enter a valid Email Address", "OK");
                     isValid = false;
@@ -91,6 +91,12 @@ namespace Xamarin_TabbedPage_Sample
             }
             else
             {
+                if (!Password.Text.IsValidPassword())
+                {
+                    await DisplayAlert("Password Address not valid",
+                        "Please enter a valid Password: Must contain uppercase, lowercase and be at least 8 characters long.", "OK");
+                    isValid = false;
+                }
                 if (!String.IsNullOrEmpty(PasswordRepeat.Text) && (PasswordRepeat.Text != Password.Text))
                 {
                     await DisplayAlert("Passwords Don't Match!", "Please make sure the password entered at both fields is the same", "OK");

@@ -36,13 +36,13 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions >
                 <Label Text="Login"
-                           Style="{StaticResource titleStyle}"
+                           Style="{StaticResource TitleStyle}"
                            HorizontalOptions="StartAndExpand"
                            Grid.Column="0"
                            Grid.Row="0"
                            />
                 <Label Text="Sign Up"
-                           Style="{StaticResource subtittleStyle}"
+                           Style="{StaticResource SubtittleStyle}"
                            HorizontalOptions="EndAndExpand"
                            VerticalTextAlignment="End"
                            VerticalOptions="End"

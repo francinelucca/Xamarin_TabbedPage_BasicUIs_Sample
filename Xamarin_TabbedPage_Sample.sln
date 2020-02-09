@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin_TabbedPage_Sample.i
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin_TabbedPage_Sample", "Xamarin_TabbedPage_Sample\Xamarin_TabbedPage_Sample\Xamarin_TabbedPage_Sample.csproj", "{B19F28BB-B355-491D-BCF2-23DAB360C5A7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{965F0A2E-F316-4514-955B-2B02301F1A16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
