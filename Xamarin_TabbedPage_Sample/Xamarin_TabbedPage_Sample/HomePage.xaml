@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xamarin_TabbedPage_Sample.HomePage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:local="clr-namespace:Xamarin_TabbedPage_Sample;assembly=Xamarin_TabbedPage_Sample" 
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             ios:Page.UseSafeArea="true"
+             NavigationPage.HasNavigationBar="False"
+             UnselectedTabColor="Gray"
+             SelectedTabColor="#F8CC51"
+             BarBackgroundColor="White"
+            x:Name="hey">
+    <NavigationPage Title="Home" Icon="home.png" BarBackgroundColor="White" BarTextColor="Black">
+        <x:Arguments>
+            <ContentPage>
+            </ContentPage>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Discovery" Icon="pin.png"  BarBackgroundColor="White" BarTextColor="Black">
+        <x:Arguments>
+            <local:DiscoveryPage Title="Discovery"/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Bookmark" Icon="bookmark.png"  BarBackgroundColor="White" BarTextColor="Black">
+        <x:Arguments>
+            <ContentPage>
+            </ContentPage>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Top Foods" Icon="award.png"  BarBackgroundColor="White" BarTextColor="Black">
+        <x:Arguments>
+            <ContentPage>
+            </ContentPage>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Profile" Icon="user.png"  BarBackgroundColor="White" BarTextColor="Black">
+        <x:Arguments>
+            <ContentPage>
+            </ContentPage>
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

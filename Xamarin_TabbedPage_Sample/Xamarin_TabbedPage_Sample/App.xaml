@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xamarin_TabbedPage_Sample.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:String" 
+                x:Key="FontAwesomeSolid"
+                        Android="fa-solid-900.ttf#Regular"
+                        iOS="FontAwesome5Free-Solid"
+                      />
+            <OnPlatform x:TypeArguments="x:String" 
+                x:Key="FontAwesomeRegular"
+                        Android="fa-regular-400.ttf#FontAwesome5Free"
+                        iOS="FontAwesome5Free-Regular"
+                      />
+            <OnPlatform x:TypeArguments="x:String" 
+                x:Key="FontAwesomeBrands"
+                        Android="fa-brands-400.ttf#Regular"
+                        iOS="FontAwesome5Brands-Regular"
+                      />
+            <Style x:Key="titleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="28"/>
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="subtittleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="LightGray"/>
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

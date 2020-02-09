@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xamarin_TabbedPage_Sample.DiscoveryPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             xmlns:local="clr-namespace:Xamarin_TabbedPage_Sample;assembly=Xamarin_TabbedPage_Sample">
+
+    <NavigationPage.TitleView>
+        <Label Text="Discovery" HorizontalTextAlignment="Center" Style="{StaticResource titleStyle}"/>
+    </NavigationPage.TitleView>
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="2.5*"/>
+            </Grid.RowDefinitions>
+            <local:DiscoveryCategory Grid.Column="0"
+                                     Grid.Row="0"/>
+            <local:DiscoveryCategory Grid.Column="1"
+                                     Grid.Row="0"/>
+            <local:DiscoveryCategory Grid.Column="0"
+                                     Grid.Row="1"/>
+            <local:DiscoveryCategory Grid.Column="1"
+                                     Grid.Row="1"/>
+            <local:DiscoveryCategory Grid.Column="0"
+                                     Grid.Row="2"/>
+            <local:DiscoveryCategory Grid.Column="1"
+                                     Grid.Row="2"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
