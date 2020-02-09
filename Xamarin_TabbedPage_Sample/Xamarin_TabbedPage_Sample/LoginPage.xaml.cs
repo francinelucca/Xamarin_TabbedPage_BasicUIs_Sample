@@ -40,7 +40,7 @@ namespace Xamarin_TabbedPage_Sample
         {
             if (await Validate())
             {
-                await Navigation.PushAsync(new HomePage());
+                await Navigation.PushAsync(new MainPage());
             }
         }
 
@@ -49,21 +49,31 @@ namespace Xamarin_TabbedPage_Sample
             bool isValid = true;
             if (String.IsNullOrEmpty(Email.Text))
             {
-                await DisplayAlert("Email Field is Required", "Please enter an Email Address", "OK");
+                await DisplayAlert("Email Field is Required", "Please enter an Email Address.", "OK");
                 isValid = false;
             }
             else
             {
-                if (!StringValidator.IsEmailValid(Email.Text))
+                if (!Email.Text.IsValidEmail())
                 {
-                    await DisplayAlert("Email Address not valid", "Please enter a valid Email Address", "OK");
+                    await DisplayAlert("Email Address not valid", "Please enter a valid Email Address.", "OK");
                     isValid = false;
                 }
             }
             if (String.IsNullOrEmpty(Password.Text))
             {
-                await DisplayAlert("Password Field is Required", "Please Enter a Password", "OK");
+                await DisplayAlert("Password Field is Required", "Please Enter a Password.", "OK");
                 isValid = false;
+            }
+            else
+            {
+                if (!Password.Text.IsValidPassword())
+                {
+                    await DisplayAlert("Password Address not valid",
+                        "Please enter a valid Password: Must contain uppercase, lowercase and be at least 8 characters long.", "OK");
+                    isValid = false;
+                }
+
             }
 
             return isValid;

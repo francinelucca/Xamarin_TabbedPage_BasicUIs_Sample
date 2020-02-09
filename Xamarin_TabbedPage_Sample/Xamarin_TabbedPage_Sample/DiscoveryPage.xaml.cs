@@ -14,7 +14,7 @@ namespace Xamarin_TabbedPage_Sample
 	{
 		public DiscoveryPage ()
 		{
-			InitializeComponent ();
+			InitializeComponent();
         }
 	}
 }

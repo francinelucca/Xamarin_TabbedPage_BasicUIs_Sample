@@ -1,14 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Xamarin_TabbedPage_Sample"
-             x:Class="Xamarin_TabbedPage_Sample.MainPage">
+             x:Class="Xamarin_TabbedPage_Sample.MainPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             ios:Page.UseSafeArea="true"
+             NavigationPage.HasNavigationBar="False"
+             UnselectedTabColor="Gray"
+             SelectedTabColor="{StaticResource AppYellow}"
+             BarBackgroundColor="White">
+    <NavigationPage Title="Home" Icon="home.png" BarBackgroundColor="White" BarTextColor="Black">
+        <x:Arguments>
+            <local:HomePage Title="Home"/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Discovery" Icon="pin.png"  BarBackgroundColor="White" BarTextColor="Black">
+        <x:Arguments>
+            <local:DiscoveryPage Title="Discovery"/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Bookmark" Icon="bookmark.png"  BarBackgroundColor="White" BarTextColor="Black">
+        <x:Arguments>
+            <local:BookmarkPage Title="Bookmark"/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Top Foods" Icon="award.png"  BarBackgroundColor="White" BarTextColor="Black">
+        <x:Arguments>
+            <local:TopFoodsPage Title="Top Foods"/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Profile" Icon="user.png"  BarBackgroundColor="White" BarTextColor="Black">
+        <x:Arguments>
+            <local:ProfilePage Title="Profile"/>
+        </x:Arguments>
+    </NavigationPage>
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-
-</ContentPage>
+</TabbedPage>

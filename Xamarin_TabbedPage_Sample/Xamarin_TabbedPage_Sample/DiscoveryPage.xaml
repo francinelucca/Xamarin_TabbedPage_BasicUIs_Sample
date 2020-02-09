@@ -4,14 +4,16 @@
              x:Class="Xamarin_TabbedPage_Sample.DiscoveryPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
-             xmlns:local="clr-namespace:Xamarin_TabbedPage_Sample;assembly=Xamarin_TabbedPage_Sample">
+             xmlns:local="clr-namespace:Xamarin_TabbedPage_Sample.Controls">
 
     <NavigationPage.TitleView>
-        <Label Text="Discovery" HorizontalTextAlignment="Center" Style="{StaticResource titleStyle}"/>
+        <Label Text="Discovery"
+               Style="{StaticResource TabbedPageTitle}"/>
     </NavigationPage.TitleView>
     
     <ContentPage.Content>
-        <Grid>
+        <Grid BackgroundColor="LightGray"
+              Padding="0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="5*"/>
@@ -22,17 +24,35 @@
                 <RowDefinition Height="2.5*"/>
             </Grid.RowDefinitions>
             <local:DiscoveryCategory Grid.Column="0"
-                                     Grid.Row="0"/>
+                                     Grid.Row="0"
+                                     CategoryImageSource="beer.png"
+                                     CategoryAvailability="42"
+                                     CategoryTitle="Bars &amp; Hotels"/>
             <local:DiscoveryCategory Grid.Column="1"
-                                     Grid.Row="0"/>
+                                     Grid.Row="0"
+                                     CategoryImageSource="service.png"
+                                     CategoryAvailability="15"
+                                     CategoryTitle="Fine Dining"/>
             <local:DiscoveryCategory Grid.Column="0"
-                                     Grid.Row="1"/>
+                                     Grid.Row="1"
+                                     CategoryImageSource="cafe.png"
+                                     CategoryAvailability="28"
+                                     CategoryTitle="Cafes"/>
             <local:DiscoveryCategory Grid.Column="1"
-                                     Grid.Row="1"/>
+                                     Grid.Row="1"
+                                     CategoryImageSource="path.png"
+                                     CategoryAvailability="34"
+                                     CategoryTitle="Nearby"/>
             <local:DiscoveryCategory Grid.Column="0"
-                                     Grid.Row="2"/>
+                                     Grid.Row="2"
+                                     CategoryImageSource="food.png"
+                                     CategoryAvailability="29"
+                                     CategoryTitle="Fast Foods"/>
             <local:DiscoveryCategory Grid.Column="1"
-                                     Grid.Row="2"/>
+                                     Grid.Row="2"
+                                     CategoryImageSource="pizza.png"
+                                     CategoryAvailability="21"
+                                     CategoryTitle="Featured Foods"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
