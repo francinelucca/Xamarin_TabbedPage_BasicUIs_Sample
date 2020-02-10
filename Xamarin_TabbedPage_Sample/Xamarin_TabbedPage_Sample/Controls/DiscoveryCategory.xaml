@@ -24,13 +24,17 @@
                HasShadow="False"
                BackgroundColor="White"
                Margin="10,5"
-               BindingContext="{x:Reference this}">
+               BindingContext="{x:Reference this}"
+               CornerRadius="5">
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnCategoryToggle"/>
             </Frame.GestureRecognizers>
             <StackLayout
-                Margin="5,10">
-                <Image Source="{Binding CategoryImageSource}" HorizontalOptions="CenterAndExpand"/>
+                Margin="5">
+                <Image Source="{Binding CategoryImageSource}" 
+                       HorizontalOptions="CenterAndExpand"
+                       HeightRequest="55"
+                       />
                 <Label Text="{Binding CategoryTitle}" Style="{StaticResource CategoryTitleStyle}"
                        />
                 <Label x:Name="Availability"
