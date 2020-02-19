@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin_TabbedPage_Sample.ViewModels;
 
 namespace Xamarin_TabbedPage_Sample
 {
@@ -15,6 +16,7 @@ namespace Xamarin_TabbedPage_Sample
 		public DiscoveryPage ()
 		{
 			InitializeComponent();
+			this.BindingContext = new DiscoveryPageViewModel();
         }
 	}
 }

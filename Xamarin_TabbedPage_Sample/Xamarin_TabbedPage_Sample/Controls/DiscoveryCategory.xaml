@@ -20,27 +20,32 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <Frame x:Name="Category"
-               HasShadow="False"
+        <Frame HasShadow="False"
                BackgroundColor="White"
                Margin="10,5"
-               BindingContext="{x:Reference this}"
-               CornerRadius="5" >
+               CornerRadius="5">
+            <Frame.Triggers>
+                <DataTrigger TargetType="Frame"
+                     Binding="{Binding IsSelected}"
+                     Value="True">
+                    <Setter Property="BackgroundColor" Value="{x:StaticResource AppYellow}" />
+                </DataTrigger>
+            </Frame.Triggers>
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnCategoryToggle"/>
+                <TapGestureRecognizer Command="{Binding Path=Parent.BindingContext.OnCategorySelectCommand, Source={x:Reference this}}" CommandParameter="{Binding .}"/>
             </Frame.GestureRecognizers>
             <StackLayout
                 Margin="5"
                 VerticalOptions="CenterAndExpand">
-                <Image Source="{Binding CategoryImageSource}" 
+                <Image Source="{Binding ImageSource}" 
                        HorizontalOptions="CenterAndExpand"
                        HeightRequest="55"
                        />
-                <Label Text="{Binding CategoryTitle}"
+                <Label Text="{Binding Name}"
                        Style="{StaticResource CategoryTitleStyle}"
                        />
                 <Label x:Name="Availability"
-                       Text="{Binding CategoryAvailability}"
+                       Text="{Binding Availability, StringFormat='{0:F0} Places'}"
                        Style="{StaticResource CategoryAvailabilityStyle}"
                        /> 
             </StackLayout>

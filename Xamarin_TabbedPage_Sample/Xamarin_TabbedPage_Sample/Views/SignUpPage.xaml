@@ -1,56 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Xamarin_TabbedPage_Sample.LoginPage"
+             x:Class="Xamarin_TabbedPage_Sample.SignUpPage"
              xmlns:utils="clr-namespace:Xamarin_TabbedPage_Sample.Utils"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
+             NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <ScrollView>
             <!-- Place new controls here -->
-            <Grid    Padding="20,35,20,20"
-                         BackgroundColor="White"
-                         VerticalOptions="FillAndExpand">
+            <Grid Padding="20,35,20,20"
+                      VerticalOptions="FillAndExpand"
+                      BackgroundColor="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition>
-                        <RowDefinition.Height>
-                            <OnPlatform x:TypeArguments="GridLength" 
-                                            Android="Auto"
-                                            iOS="50"
-                                            />
-                        </RowDefinition.Height>
-                    </RowDefinition>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions >
-                <Label Text="Login"
+                <Label Text="Sign Up"
                            Style="{StaticResource TitleStyle}"
                            HorizontalOptions="StartAndExpand"
                            Grid.Column="0"
                            Grid.Row="0"
                            />
-                <Label Text="Sign Up"
+                <Label Text="Login"
                            Style="{StaticResource SubtittleStyle}"
                            HorizontalOptions="EndAndExpand"
                            VerticalTextAlignment="End"
                            VerticalOptions="End"
-                           Grid.Column="3"
+                           Grid.Column="1"
                            Grid.Row="0"
                            >
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="GoToSignUp"/>
+                        <TapGestureRecognizer Command="{Binding OnGoToLoginCommand}"/>
                     </Label.GestureRecognizers>
                 </Label>
                 <Frame x:Name="FrameExtContainer" 
@@ -60,13 +52,13 @@
                            HeightRequest="90"
                            WidthRequest="90"
                            CornerRadius="45"
-                           Margin="0,50,0,0"
+                           Margin="5,50,5,0"
+                           Padding="0"
                            OutlineColor="LightGray" 
                            BackgroundColor="LightGray"
-                           Grid.Row="1"
                            Grid.Column="0"
-                           Grid.ColumnSpan="4"
-                           Padding="0">
+                           Grid.ColumnSpan="2"
+                           Grid.Row="1">
                     <Frame HasShadow="False" 
                                WidthRequest="76" 
                                HeightRequest="76" 
@@ -77,10 +69,9 @@
                                VerticalOptions="Center"
                                Margin="0"
                                Padding="0"
-                           >
-                        <Label 
-                                    FontFamily="{StaticResource FontAwesomeSolid}" 
-                                    Text="{x:Static utils:Icon.User}"
+                               >
+                        <Label FontFamily="{StaticResource FontAwesomeSolid}" 
+                                    Text="{x:Static utils:Icon.Camera}"
                                     VerticalOptions="Center"
                                     VerticalTextAlignment="Center"
                                     HorizontalOptions="Center"
@@ -91,24 +82,76 @@
                     </Frame>
                 </Frame>
                 <Entry     x:Name="Email"
-                           Placeholder="Username or email address"
+                           Text="{Binding Email}"
+                           Placeholder="Email address"
                            TextColor="Gray"
                            PlaceholderColor="LightGray"
                            ReturnType="Next" 
-                           Completed="FocusPassword"
+                           Margin="5,30,5,0"
+                           Completed="FocusUsername"
                            FontAttributes="Bold"
-                           Grid.Row="2"
-                           Grid.Column="0"
-                           Grid.ColumnSpan="4"
-                           Margin="5,30,5,0"/>
-                <Entry IsPassword="True" 
+                            Grid.ColumnSpan="2"
+                            Grid.Column="0"
+                            Grid.Row="2"/>
+                <Entry Placeholder="Username"
+                            x:Name="Username"
+                            Text="{Binding UserName}"
+                            TextColor="Gray"
+                            PlaceholderColor="LightGray"
+                            ReturnType="Next" 
+                            Completed="FocusPassword"
+                            FontAttributes="Bold"
+                            Grid.ColumnSpan="2"
+                            Grid.Column="0"
+                            Grid.Row="3">
+                    <Entry.Margin >
+                        <OnPlatform x:TypeArguments="Thickness" 
+                                        Android="5,0,5,0"
+                                        iOS="5,20,5,0"
+                                        />
+                    </Entry.Margin>
+                </Entry>
+                <Entry IsPassword="{Binding HidePassword}" 
+                              Text="{Binding Password}"
                                x:Name="Password" 
                                TextColor="Gray" 
                                Placeholder="Password" 
                                PlaceholderColor="LightGray"
-                               Grid.Row="3"
                                Grid.Column="0" 
-                               Grid.ColumnSpan="4"
+                               Grid.Row="4"
+                               Grid.ColumnSpan="2"
+                               FontAttributes="Bold"
+                               Completed="FocusPasswordRepeat">
+                    <Entry.Margin >
+                        <OnPlatform x:TypeArguments="Thickness" 
+                                            Android="5,0,5,0"
+                                            iOS="5,20,5,0"
+                                            />
+                    </Entry.Margin>
+                </Entry>
+                <Label x:Name="PasswordVisibility"
+                               Text="{Binding PasswordVisibilityIcon}" 
+                               FontFamily="{StaticResource FontAwesomeSolid}" 
+                               HorizontalOptions="End" 
+                               VerticalOptions="Center" 
+                               FontSize="Medium"
+                               TextColor="LightGray"
+                               Margin="5,0,10,0"
+                               Grid.Column="1"
+                               Grid.Row="4">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnPasswordToggleCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Entry IsPassword="{Binding HidePasswordRepeat}" 
+                               Text="{Binding PasswordRepeat}"
+                               x:Name="PasswordRepeat" 
+                               TextColor="Gray" 
+                               Placeholder="Repeat Password" 
+                               PlaceholderColor="LightGray"
+                               Grid.Column="0" 
+                               Grid.ColumnSpan="2"
+                               Grid.Row="5"
                                FontAttributes="Bold">
                     <Entry.Margin >
                         <OnPlatform x:TypeArguments="Thickness" 
@@ -117,41 +160,30 @@
                                             />
                     </Entry.Margin>
                 </Entry>
-                <Label x:Name="Visibility"
-                               Text="{x:Static utils:Icon.Visible}" 
+                <Label x:Name="PasswordRepeatVisibility"
+                               Text="{Binding PasswordRepeatVisibilityIcon}" 
                                FontFamily="{StaticResource FontAwesomeSolid}" 
                                HorizontalOptions="End" 
                                VerticalOptions="Center" 
                                FontSize="Medium"
                                TextColor="LightGray"
                                Margin="5,0,10,0"
-                               Grid.Column="3"
-                               Grid.Row="3" >
+                               Grid.Column="1"
+                               Grid.Row="5">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ShowPassword"/>
+                        <TapGestureRecognizer Command="{Binding OnPasswordRepeatToggleCommand}"/>
                     </Label.GestureRecognizers>
                 </Label>
-                <Label 
-                            FontFamily="{StaticResource FontAwesomeRegular}" 
-                            Text="{x:Static utils:Icon.LifeRing}"
-                            HorizontalOptions="End"
-                            FontSize="Medium"
-                            TextColor="LightGray"
-                            Margin="5,0,10,0"
-                            Grid.Column="0"
-                            Grid.Row="4"
-                            Grid.ColumnSpan="4"
-                            />
                 <Frame HasShadow="True"
-                           Margin="5,30,5,0"
+                           Margin="5,40,5,0"
                            Padding="10"
                            HorizontalOptions="FillAndExpand"
                            CornerRadius="20"
+                           Grid.Row="6"
                            Grid.Column="0"
-                           Grid.Row="5"
-                           Grid.ColumnSpan="4">
+                           Grid.ColumnSpan="2">
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnLogin"/>
+                        <TapGestureRecognizer Command="{Binding OnSignUpCommand}"/>
                     </Frame.GestureRecognizers>
                     <StackLayout Orientation="Horizontal"
                                      HorizontalOptions="FillAndExpand">
@@ -161,52 +193,26 @@
                                    VerticalOptions="Center"
                                    FontSize="Medium"
                                    TextColor="#9fa5ce"
-                                   />
-                        <Label Text="LOG IN"
+                                    />
+                        <Label Text="SIGN UP"
                                    TextColor="#9fa5ce"
                                    BackgroundColor="White"
                                    VerticalOptions="Center"
                                    HorizontalOptions="StartAndExpand"
                                    Font="Bold,20"
-                                   />
+                                    />
                     </StackLayout>
                 </Frame>
-                <Label Text="Login with"
+                <Label Text="Terms of Service"
                            TextColor="LightGray"
-                           VerticalOptions="EndAndExpand"
                            HorizontalOptions="Center"
+                           VerticalOptions="EndAndExpand"
                            Margin="5,40,5,0"
                            Font="Bold"           
                            FontSize="Small"
-                           Grid.Row="6"
+                           Grid.Row="7"
                            Grid.Column="0"
-                           Grid.ColumnSpan="4"/>
-                <ImageButton Source="googlePlus.png" 
-                              Grid.Column="0"
-                              Grid.Row="7"
-                              VerticalOptions="End"
-                              HorizontalOptions="Center"
-                              BackgroundColor="Transparent"
-                              Margin="5,10,0,0"/>
-                <ImageButton Source="github.png" 
-                              Grid.Column="1"
-                              Grid.Row="7"
-                              VerticalOptions="End"
-                              HorizontalOptions="Center"
-                              BackgroundColor="Transparent"/>
-                <ImageButton Source="twitter.png" 
-                              Grid.Column="2"
-                              Grid.Row="7"
-                              VerticalOptions="End"
-                              HorizontalOptions="Center"
-                              BackgroundColor="Transparent"/>
-                <ImageButton Source="facebook.png" 
-                              Grid.Column="3"
-                              Grid.Row="7"
-                              VerticalOptions="End"
-                              HorizontalOptions="Center"
-                              BackgroundColor="Transparent"
-                              Margin="0,0,5,0"/>
+                           Grid.ColumnSpan="2"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

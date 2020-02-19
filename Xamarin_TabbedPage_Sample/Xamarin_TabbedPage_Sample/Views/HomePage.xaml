@@ -3,11 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xamarin_TabbedPage_Sample.HomePage"
              >
-    
+
     <NavigationPage.TitleView>
         <Label Text="Home"
                Style="{StaticResource TabbedPageTitle}"/>
     </NavigationPage.TitleView>
-    <ContentPage.Content>
-    </ContentPage.Content>
 </ContentPage>

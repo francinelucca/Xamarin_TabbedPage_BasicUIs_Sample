@@ -5,6 +5,4 @@
         <Label Text="Bookmark"
                Style="{StaticResource TabbedPageTitle}"/>
     </NavigationPage.TitleView>
-    <ContentPage.Content>
-    </ContentPage.Content>
 </ContentPage>
