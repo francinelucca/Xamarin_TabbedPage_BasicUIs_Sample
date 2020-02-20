@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin_TabbedPage_Sample.Models;
 using Xamarin_TabbedPage_Sample.Utils;
 
 namespace Xamarin_TabbedPage_Sample.ViewModels
@@ -12,10 +13,9 @@ namespace Xamarin_TabbedPage_Sample.ViewModels
 	public class SignUpPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public string Password { get; set; }
+
+        public User User { get; set; }
         public string PasswordRepeat { get; set; }
-        public string Email { get; set; }
-        public string UserName { get; set; }
         public bool HidePassword { get; set; }
         public bool HidePasswordRepeat { get; set; }
         public string PasswordVisibilityIcon { get; set; }
@@ -30,7 +30,8 @@ namespace Xamarin_TabbedPage_Sample.ViewModels
             HidePasswordRepeat = true;
             PasswordVisibilityIcon = Utils.Icon.Visible;
             PasswordRepeatVisibilityIcon = Utils.Icon.Visible;
-            this.Email = emailAddress;
+            this.User = new User();
+            this.User.Email = emailAddress;
             OnGoToLoginCommand = new Command(
                 execute: async () =>
                 {
@@ -66,38 +67,38 @@ namespace Xamarin_TabbedPage_Sample.ViewModels
         private async Task<bool> Validate()
         {
             bool isValid = true;
-            if (String.IsNullOrEmpty(Email))
+            if (String.IsNullOrEmpty(User.Email))
             {
                 await App.Current.MainPage.DisplayAlert("Email Field is Required", "Please enter an Email Address", "OK");
                 isValid = false;
             }
             else
             {
-                if (!Email.IsValidEmail())
+                if (!User.Email.IsValidEmail())
                 {
                     await App.Current.MainPage.DisplayAlert("Email Address not valid", "Please enter a valid Email Address", "OK");
                     isValid = false;
                 }
             }
-            if (String.IsNullOrEmpty(UserName))
+            if (String.IsNullOrEmpty(User.UserName))
             {
                 await App.Current.MainPage.DisplayAlert("Username Field is Required", "Please Enter a Username", "OK");
                 isValid = false;
             }
-            if (String.IsNullOrEmpty(Password))
+            if (String.IsNullOrEmpty(User.Password))
             {
                 await App.Current.MainPage.DisplayAlert("Password Field is Required", "Please Enter a Password", "OK");
                 isValid = false;
             }
             else
             {
-                if (!Password.IsValidPassword())
+                if (!User.Password.IsValidPassword())
                 {
                     await App.Current.MainPage.DisplayAlert("Password Address not valid",
                         "Please enter a valid Password: Must contain uppercase, lowercase and be at least 8 characters long.", "OK");
                     isValid = false;
                 }
-                if (!String.IsNullOrEmpty(Password) && (PasswordRepeat != Password))
+                if (!String.IsNullOrEmpty(User.Password) && (PasswordRepeat != User.Password))
                 {
                     await App.Current.MainPage.DisplayAlert("Passwords Don't Match!", "Please make sure the password entered at both fields is the same", "OK");
                     isValid = false;

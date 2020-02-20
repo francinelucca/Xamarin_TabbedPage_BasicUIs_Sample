@@ -91,7 +91,7 @@
                     </Frame>
                 </Frame>
                 <Entry     x:Name="Email"
-                           Text="{Binding Email}"
+                           Text="{Binding User.Email}"
                            Placeholder="Username or email address"
                            TextColor="Gray"
                            PlaceholderColor="LightGray"
@@ -103,7 +103,7 @@
                            Grid.ColumnSpan="4"
                            Margin="5,30,5,0"/>
                 <Entry IsPassword="{Binding HidePassword}" 
-                               Text="{Binding Password}"
+                               Text="{Binding User.Password}"
                                x:Name="Password" 
                                TextColor="Gray" 
                                Placeholder="Password" 
